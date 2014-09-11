@@ -10,6 +10,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: $heading-font-weight;
 }
 
+h1, h2, h3, h4, h5, h6, p, ul {
+    margin: 0 0 16px;
+    margin: 0 0 1rem;
+}
+
 ul {
     list-style: none;
     padding: .2em 0 .2em 1em;
