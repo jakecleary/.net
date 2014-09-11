@@ -1,7 +1,7 @@
 // Dependencies
 var gulp = require('gulp'),
     // Styles
-    compass = require('gulp-sass'),
+    sass = require('gulp-sass'),
     autoprefix = require('gulp-autoprefixer'),
     minify = require('gulp-minify-css'),
     // Other
@@ -77,12 +77,7 @@ gulp.task('watch', function() {
 gulp.task('deploy', ['clean'], function() {
     // Run the styles task, but minify the output
     gulp.src(paths.assets.styles.files)
-        .pipe(compass({
-            config_file: './config.rb',
-            sass: paths.assets.styles.dir,
-            css: paths.public.styles,
-            image: paths.assets.img.dir
-        }))
+        .pipe(sass())
         .pipe(autoprefix('last 4 version'))
         .pipe(minify())
         .pipe(gulp.dest(paths.public.styles));
