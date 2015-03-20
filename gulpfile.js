@@ -4,6 +4,9 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefix = require('gulp-autoprefixer'),
     minify = require('gulp-minify-css'),
+    // Scripts
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
     // Images
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
@@ -23,11 +26,20 @@ var paths = {
                 'assets/images/**/*.png',
                 'assets/images/**/*.jpg',
             ]
+        },
+        scripts: {
+            dir: 'assets/scripts',
+            files: [
+                'assets/scripts/vendor/**',
+                'assets/scripts/src/**',
+                'assets/scripts/main.js'
+            ]
         }
     },
     public: {
         styles: 'public/styles',
-        images: 'public/images'
+        images: 'public/images',
+        scripts: 'public/scripts'
     }
 }
 
@@ -57,6 +69,18 @@ gulp.task('images', function() {
     gulp.src(paths.assets.images.files)
         .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
         .pipe(gulp.dest(paths.public.images));
+});
+
+//
+// Scripts task
+// ------------
+// Take vendor, src, and the main JS files and concatenate them and minify.
+//
+
+gulp.task('scripts', function() {
+    gulp.src(paths.assets.scripts.files)
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest(paths.public.scripts));
 });
 
 //
@@ -90,6 +114,7 @@ gulp.task('cache', function() {
 gulp.task('watch', function() {
     // Run the appropriate task when assets change
     gulp.watch(paths.assets.styles.files, ['styles']);
+    gulp.watch(paths.assets.scripts.files, ['scripts']);
     gulp.watch(paths.assets.images.files, ['images']);
 });
 
@@ -107,6 +132,12 @@ gulp.task('deploy', ['clean'], function() {
         .pipe(minify())
         .pipe(gulp.dest(paths.public.styles));
 
+    gulp.src(paths.assets.scripts.files)
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.public.scripts));
+
+
     // Optimise the images
     gulp.start('images');
 });
@@ -118,5 +149,5 @@ gulp.task('deploy', ['clean'], function() {
 //
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'images', 'watch');
+    gulp.start('styles', 'scripts', 'images', 'watch');
 });
