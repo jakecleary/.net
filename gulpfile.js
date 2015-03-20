@@ -90,7 +90,7 @@ gulp.task('scripts', function() {
 //
 
 gulp.task('clean', function() {
-  return gulp.src([paths.public.styles, paths.public.images], {read: false})
+  return gulp.src([paths.public.styles, paths.public.scripts, paths.public.images], {read: false})
     .pipe(clean());
 });
 
