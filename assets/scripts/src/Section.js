@@ -7,7 +7,10 @@ var Section = (function($) {
 
     var goTo = function(section) {
 
-        currentSection = $('section--current');
+        currentSection = $('.section--active');
+
+        console.log(currentSection);
+        console.log(section);
 
         _goAway(currentSection);
         _comeHere(section);
@@ -15,11 +18,11 @@ var Section = (function($) {
     };
 
     var _goAway = function(section) {
-        console.log('go away');
+        section.removeClass('section--active');
     };
 
     var _comeHere = function(section) {
-        console.log('come here');
+        section.addClass('section--active');
     };
 
     return {

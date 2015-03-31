@@ -4,8 +4,9 @@
         var intro = $('.section--intro'),
             cv = $('.section--cv');
 
-        $('.bio__image').click(function() {
-            Section.goTo(cv);
+        $('.links li').click(function(e) {
+            element = $(e.target).data('section');
+            Section.goTo($('.' + element));
         });
 
     });
