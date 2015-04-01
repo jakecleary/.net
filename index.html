@@ -20,19 +20,21 @@
 
     <body class="page">
 
-        <ul class="links">
-            <li data-section="section--intro" class="intro">Home</li>
-            <li data-section="section--cv" class="cv">CV</li>
-        </ul>
+        <header class="page__content">
+            <div class="profile">
+                <img src="public/images/jakecleary.jpg" alt="A picture of me (Jake Cleary)" class="profile__image">
+                <h1 class="profile__name">Jake Cleary</h1>
+            </div>
 
-        <div class="page__wrapper">
+            <nav class="nav">
+                <span data-section="section--intro" class="nav__link nav__link--active">Home</span>
+                <span data-section="section--cv" class="nav__link">CV</span>
+            </nav>
+        </header>
+
+        <div class="page__content">
 
             <section class="section section--intro section--active">
-
-                <div class="bio">
-                    <img src="public/images/jakecleary.jpg" alt="A picture of me (Jake Cleary)" class="bio__image">
-                    <h1 class="bio__name">Jake Cleary</h1>
-                </div>
 
                 <p>Hi, I'm Jake Cleary, a web developer from the south coast of the UK. I enjoy writing elegent, efficient code; I help out with some open source projects like <a href="https://github.com/mojotech/jeet">Jeet</a>; and like nothing more than getting stuck in and learning new things.</p>
                 <p>A few of the technologies I'm interested in are:</p>

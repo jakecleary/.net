@@ -1,30 +1,45 @@
+/**
+ * Simple module for navigating between section of the site.
+ */
 var Section = (function($) {
 
-    var config = {
-        sections: $('.section'),
-        currentSection: ''
-    };
-
+    /**
+     * Toggle a section.
+     *
+     * @param {object} section The jQuery object <section> element
+     */
     var goTo = function(section) {
 
+        // Get the current section
         currentSection = $('.section--active');
 
-        console.log(currentSection);
-        console.log(section);
-
+        // Navigate to the new section
         _goAway(currentSection);
         _comeHere(section);
 
     };
 
+    /**
+     * Hide a section.
+     *
+     * @param {object} section The jQuery object <section> element
+     */
     var _goAway = function(section) {
         section.removeClass('section--active');
     };
 
+    /**
+     * Bring a section into view.
+     *
+     * @param {object} section The jQuery object <section> element
+     */
     var _comeHere = function(section) {
         section.addClass('section--active');
     };
 
+    /**
+     * Return public methods.
+     */
     return {
         goTo: goTo
     };

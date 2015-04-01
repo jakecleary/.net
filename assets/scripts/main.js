@@ -1,12 +1,32 @@
 (function($) {
     $(document).ready(function() {
 
-        var intro = $('.section--intro'),
-            cv = $('.section--cv');
+        /**
+         * Site section navigation
+         */
 
-        $('.links li').click(function(e) {
-            element = $(e.target).data('section');
-            Section.goTo($('.' + element));
+        var navLink = $('.nav__link'),
+            navLinkActiveName = 'nav__link--active';
+
+        navLink.click(function(e)
+        {
+            // Get the link we clicked
+            var element = $(e.target);
+
+            // Only runt he code if we clicked on an inactive section
+            if(element.hasClass(navLinkActiveName)) {
+                return;
+            };
+
+            // Activate the nav item we clicked
+            navLink.removeClass(navLinkActiveName);
+            element.addClass(navLinkActiveName);
+
+            // Get the name of the section we want to navigate to
+            var section = element.data('section');
+
+            // Go to it, yo
+            Section.goTo($('.' + section));
         });
 
     });
