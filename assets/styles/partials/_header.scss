@@ -1,10 +1,16 @@
 .header {
     @include content;
 
+    text-align: center;
+
     padding: {
         top: 2rem;
         bottom: 2rem;
     };
+
+    @include bp(440px) {
+        text-align: left;
+    }
 }
 
 .profile {
@@ -19,35 +25,75 @@
     }
 
     &__name {
-        vertical-align: middle;
         display: inline-block;
+        vertical-align: middle;
         margin: 0 0 0 1rem;
-        text-align: center;
         line-height: 1;
+
+        font: {
+            weight: 700;
+            size: 2rem;
+        };
+
+        text: {
+            transform: uppercase;
+            align: center;
+        };
+
+        @include bp(440px) {
+            font-size: 1.5rem;
+        }
     }
 }
 
 .nav {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    margin-top: 1rem;
+
+    @include bp(440px) {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        margin: 0;
+    }
 
     &__link {
         line-height: 1;
         margin-right: 1rem;
         text-transform: uppercase;
         color: #CCC;
-        font-size: .8rem;
         cursor: pointer;
+        padding: .5rem;
+        transition: .3s all;
+
+        font: {
+            size: .8rem;
+            weight: bold;
+        };
+
+        border: {
+            width: 2px;
+            style: solid;
+            color: #CCC;
+            radius: 2rem;
+        };
 
         &:last-child {
             margin-right: 0;
         }
 
-        &--active {
-            cursor: auto;
-            color: $base-color;
+        &--active,
+        &:hover {
+            background: #CCC;
+            color: #FFF;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--active:hover {
+            cursor: default;
         }
     }
 }
