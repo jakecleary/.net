@@ -1,0 +1,10 @@
+@mixin content {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+
+    padding: {
+        left: 1rem;
+        right: 1rem;
+    };
+}

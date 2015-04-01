@@ -1,9 +1,12 @@
 @import
 
-"variables/global",
+'variables/global',
 
-"mixins/breakpoints",
+'mixins/breakpoints',
+'mixins/layout',
 
-"partials/reset",
-"partials/typography",
-"partials/home";
+'partials/reset',
+'partials/typography',
+'partials/header',
+'partials/sections',
+'partials/cv';
