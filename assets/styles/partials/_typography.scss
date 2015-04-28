@@ -6,6 +6,10 @@ body {
     color: $base-color;
 }
 
+.page__wrapper {
+    text-align: justify;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: $heading-font-weight;
 }
@@ -32,10 +36,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
         height: 6px;
         background: $light-gray;
     }
-}
-
-.page__wrapper {
-    text-align: justify;
 }
 
 ul {
