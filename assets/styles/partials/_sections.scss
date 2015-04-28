@@ -1,14 +1,15 @@
-.sections {
+.page__content {
     @include content;
 }
 
-.section {
+.site-section {
     position: absolute;
     top: 0;
     left: 0;
     transition: all .3s;
-    padding: 0 1.5rem;
+    margin: 0 1.5rem;
     text-align: justify;
+    overflow: hidden;
 
     // Inactive styles
     transform: scale(0.6);

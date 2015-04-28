@@ -11,7 +11,7 @@ var Section = (function($) {
     var goTo = function(section) {
 
         // Get the current section
-        currentSection = $('.section--active');
+        currentSection = $('.site-section--active');
 
         // Navigate to the new section
         _goAway(currentSection);
@@ -25,7 +25,7 @@ var Section = (function($) {
      * @param {object} section The jQuery object <section> element
      */
     var _goAway = function(section) {
-        section.removeClass('section--active');
+        section.removeClass('site-section--active');
     };
 
     /**
@@ -34,7 +34,7 @@ var Section = (function($) {
      * @param {object} section The jQuery object <section> element
      */
     var _comeHere = function(section) {
-        section.addClass('section--active');
+        section.addClass('site-section--active');
     };
 
     /**

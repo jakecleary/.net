@@ -15,6 +15,25 @@ h1, h2, h3, h4, h5, h6, p, ul {
     margin: 0 0 1rem;
 }
 
+.section__heading {
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+
+    &:after {
+        display: inline-block;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 1rem);
+        transform: translateY(-50%);
+        width: 300px;
+        height: 6px;
+        background: $light-gray;
+    }
+}
+
 .page__wrapper {
     text-align: justify;
 }
