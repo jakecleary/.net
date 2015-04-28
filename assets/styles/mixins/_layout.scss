@@ -8,3 +8,11 @@
         right: 1.5rem;
     };
 }
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

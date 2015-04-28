@@ -60,3 +60,26 @@ a {
         border-color: rgba(lightseagreen, .8);
     }
 }
+
+dl {
+    @include clearfix;
+
+    margin: 0 0 1rem;
+
+    dt,
+    dd {
+        float: left;
+        display: inline-block;
+        margin: 0;
+    }
+
+    dt {
+        margin-right: .5rem;
+        clear: left;
+        font-weight: 700;
+
+        &:after {
+            content: ':';
+        }
+    }
+}
