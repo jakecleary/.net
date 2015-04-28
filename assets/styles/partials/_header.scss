@@ -57,7 +57,7 @@
         line-height: 1;
         margin-right: .6rem;
         text-transform: uppercase;
-        color: #CCC;
+        color: darken($light-gray, 10%);
         cursor: pointer;
         padding: .4rem;
         transition: .3s all;
@@ -70,7 +70,7 @@
         border: {
             width: 2px;
             style: solid;
-            color: #CCC;
+            color: darken($light-gray, 10%);
             radius: 2rem;
         };
 
@@ -80,7 +80,7 @@
 
         &--active,
         &:hover {
-            background: #CCC;
+            background: darken($light-gray, 10%);
             color: #FFF;
         }
 
