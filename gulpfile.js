@@ -76,6 +76,7 @@ var deployment = {
     // The files we want to deploy
     files: [
         '**/*',
+        '!{_deploy,_deploy/**}',
         '!{assets,assets/**}',
         '!{node_modules,node_modules/**}',
         '!package.json',
