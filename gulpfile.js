@@ -33,10 +33,7 @@ var paths = {
     assets: {
         styles: {
             dir: 'assets/styles',
-            files: [
-                'assets/styles/main.scss',
-                'assets/styles/login.scss'
-            ]
+            files: 'assets/styles/**/*.scss',
         },
         js: {
             dir: 'assets/scripts/',
