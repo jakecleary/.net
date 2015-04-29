@@ -1,14 +1,22 @@
 @media print {
-
     .nav,
     .site-section--intro {
         display: none;
     }
 
     .site-section--cv {
-        display: block !important;
-        transform: none !important;
-        opacity: 1 !important;
-        z-index: 2 !important;
+        display: block;
+        transform: none;
+        opacity: 1;
+        z-index: 1;
+        margin: 0;
+    }
+
+    .section--about .section__heading {
+        display: none;
+    }
+
+    .experience li:first-child {
+        page-break-after: always;
     }
 }

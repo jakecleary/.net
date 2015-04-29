@@ -10,9 +10,8 @@
 
     @media print {
         position: static;
-        max-width: auto;
+        max-width: calc(100% - 8rem);
         padding: 0;
-        margin: 0;
     }
 }
 

@@ -11,10 +11,18 @@
     @include bp(440px) {
         text-align: left;
     }
+
+    @media print {
+        padding: 0;
+    }
 }
 
 .profile {
     display: inline-block;
+
+    @media print {
+        display: block;
+    }
 
     &__image {
         vertical-align: middle;
@@ -22,6 +30,14 @@
         border-radius: 50%;
         width: 15%;
         margin: 0;
+
+        @media print {
+            display: block;
+            position: fixed;
+            top: 2rem;
+            right: 4rem;
+            width: 75px;
+        }
     }
 
     &__name {
@@ -39,6 +55,10 @@
             transform: uppercase;
             align: center;
         };
+
+        @media print {
+            display: none;
+        }
     }
 }
 
@@ -51,6 +71,10 @@
         right: 1.5rem;
         transform: translateY(-50%);
         margin: 0;
+    }
+
+    @media print {
+        display: none;
     }
 
     &__link {
