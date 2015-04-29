@@ -7,6 +7,13 @@
         left: 1.5rem;
         right: 1.5rem;
     };
+
+    @media print {
+        position: static;
+        max-width: auto;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 @mixin clearfix {

@@ -1,0 +1,14 @@
+@media print {
+
+    .nav,
+    .site-section--intro {
+        display: none;
+    }
+
+    .site-section--cv {
+        display: block !important;
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: 2 !important;
+    }
+}
