@@ -27,20 +27,6 @@
 
             // Go to it, yo
             Section.goTo(section);
-
-            // Temporary
-            if(section.hasClass('site-section--intro'))
-            {
-                $('body').css({
-                    overflowY: 'hidden'
-                });
-            }
-            else
-            {
-                $('body').css({
-                    overflowY: 'visible'
-                });
-            }
         });
 
     });
