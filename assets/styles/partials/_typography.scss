@@ -1,5 +1,5 @@
 body {
-    font-family: $base-font-family;
+    font-family: $body-font-family;
     font-size: $base-font-size;
     font-weight: $base-font-weight;
     line-height: $base-line-height;
@@ -12,6 +12,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: $heading-font-weight;
+    text-transform: uppercase;
+
+    small {
+        font-size: 80%;
+        color: darken($light-gray, 20%);
+    }
 }
 
 h1, h2, h3, h4, h5, h6, p, ul {
@@ -21,8 +27,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .section__heading {
     display: inline-block;
-    font-weight: 600;
-    text-transform: uppercase;
     position: relative;
 
     &:after {
@@ -39,25 +43,15 @@ h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 ul {
-    list-style: none;
-    padding: .2em 0 .2em 1em;
-    border: {
-        width: 0 0 0 3px;
-        color: lightseagreen;
-        style: solid;
-    }
+    padding-left: 1.2rem;
 }
 
 a {
     transition: all .8s;
-    color: $base-color;
-    border: {
-        width: 0 0 3px;
-        color: rgba($base-color,.1);
-        style: solid;
-    }
+    color: lightseagreen;
+
     &:hover {
-        border-color: rgba(lightseagreen, .8);
+        color: $base-color;
     }
 }
 
@@ -82,4 +76,19 @@ dl {
             content: ':';
         }
     }
+}
+
+code {
+    font-family: $monospace-family;
+    background: $light-gray;
+    padding: 0 .2rem;
+    color: darken($light-gray, 40%);
+    border-radius: 2px;
+}
+
+.experience {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
 }

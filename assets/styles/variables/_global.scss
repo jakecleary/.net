@@ -1,9 +1,13 @@
-$base-font-family: 'Roboto', sans-serif;
+// Typography
+$body-font-family: 'Roboto', sans-serif;
+$monospace-family: 'Source Code Pro', monospace;
+
 $base-font-size: 16px;
 $base-line-height: 1.8;
 $base-font-weight: 300;
 
+$heading-font-weight: 600;
+
+// Colors
 $base-color: #444;
 $light-gray: #EFEFEF;
-
-$heading-font-weight: 300;

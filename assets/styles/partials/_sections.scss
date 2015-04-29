@@ -8,7 +8,6 @@
     left: 0;
     transition: all .3s;
     margin: 0 1.5rem;
-    text-align: justify;
     overflow: hidden;
 
     // Inactive styles
@@ -24,6 +23,10 @@
         transform: scale(1);
         opacity: 1;
         z-index: 2;
+    }
+
+    p {
+        text-align: justify;
     }
 }
 
