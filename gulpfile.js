@@ -1,153 +1,231 @@
 // Dependencies
+// ============
+
 var gulp = require('gulp'),
+
     // Styles
     sass = require('gulp-sass'),
     autoprefix = require('gulp-autoprefixer'),
     minify = require('gulp-minify-css'),
+
     // Scripts
-    concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    strip = require('gulp-strip-debug'),
+    concat = require('gulp-concat'),
+
     // Images
-    imagemin = require('gulp-imagemin'),
+    png = require('imagemin-optipng'),
+    jpg = require('imagemin-jpegtran'),
+    gif = require('imagemin-gifsicle'),
     cache = require('gulp-cache'),
+
     // Other
-    clean = require('gulp-clean');
+    util = require('gulp-util'),
+    del = require('del'),
+    notify = require('gulp-notify'),
+    notifier = require('node-notifier'),
+    merge = require('merge-stream');
 
 // Assets
+// ======
+
 var paths = {
     assets: {
         styles: {
             dir: 'assets/styles',
-            files: 'assets/styles/**/*.scss'
-        },
-        images: {
-            dir: 'assets/images',
             files: [
-                'assets/images/**/*.png',
-                'assets/images/**/*.jpg',
+                'assets/styles/main.scss',
+                'assets/styles/login.scss'
             ]
         },
-        scripts: {
-            dir: 'assets/scripts',
+        js: {
+            dir: 'assets/scripts/',
             files: [
-                'assets/scripts/vendor/**',
-                'assets/scripts/src/**',
+                'assets/scripts/vendor/**/*.js',
+                'assets/scripts/src/**/*.js',
                 'assets/scripts/main.js'
-            ]
+            ],
+        },
+        img: {
+            dir: 'assets/images',
+            files: 'assets/images/**/*',
+            png: 'assets/images/*.png',
+            jpg: 'assets/images/*.jpg',
+            gif: 'assets/images/*.gif',
+            svg: 'assets/images/*.svg'
         }
     },
     public: {
         styles: 'public/styles',
-        images: 'public/images',
-        scripts: 'public/scripts'
+        js: 'public/scripts',
+        img: 'public/images',
     }
 }
 
-//
-// Styles task
-// -----------
-// Grabs everything inside the styles & sprites directories, concantinates
-// and compiles scss, builds sprites, and then outputs them to their
+// General Settings
+// ================
+
+var settings = {
+    autoprefix: {
+        versions: 'last 4 version'
+    }
+}
+
+// Deployment
+// ==========
+
+var deployment = {
+
+    // The files we want to deploy
+    files: [
+        '**/*',
+        '!{assets,assets/**}',
+        '!{node_modules,node_modules/**}',
+        '!package.json',
+        '!gulpfile.js',
+        '!readme.md'
+    ],
+
+    // The folder to store them in
+    destination: '_deploy'
+}
+
+// Styles
+// ======
+// Grabs everything inside the styles & sprites
+// directories, concantinates and compiles scss,
+// builds sprites, and then outputs them to their
 // respective target directories.
-//
 
 gulp.task('styles', function() {
     gulp.src(paths.assets.styles.files)
         .pipe(sass())
-        .pipe(autoprefix('last 5 version'))
+        .pipe(autoprefix(settings.autoprefix.versions))
         .pipe(gulp.dest(paths.public.styles));
 });
 
-//
-// Images task
-// -----------
-// Grab all the images, optimise them, and whack them
-// inside the public/images directory.
-//
-
-gulp.task('images', function() {
-    gulp.src(paths.assets.images.files)
-        .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-        .pipe(gulp.dest(paths.public.images));
-});
-
-//
-// Scripts task
-// ------------
-// Take vendor, src, and the main JS files and concatenate them and minify.
-//
+// Scripts
+// =======
+// Grabs everything inside the js directory,
+// concantinates and minifies, and then outputs
+// them to the target directory.
 
 gulp.task('scripts', function() {
-    gulp.src(paths.assets.scripts.files)
+    gulp.src(paths.assets.js.files)
         .pipe(concat('main.js'))
-        .pipe(gulp.dest(paths.public.scripts));
+        .pipe(gulp.dest(paths.public.js));
 });
 
-//
-// Cleaner task
-// ------------
-// This simply deletes all of the main assets folders.
-//
+// Images
+// ======
+// Grabs everything inside the img directory,
+// optimises each image, and then outputs them to
+// the target directory.
 
-gulp.task('clean', function() {
-  return gulp.src([paths.public.styles, paths.public.scripts, paths.public.images], {read: false})
-    .pipe(clean());
+gulp.task('images', function() {
+    gulp.src(paths.assets.img.files)
+        .pipe(gulp.dest(paths.public.img));
 });
 
-//
-// Cache clearing task
-// -------------------
-// Destroy the cache so that image name changes take effect etc
-//
+// Cache-buster
+// ============
+// Completely clear the cache to stop image-min
+// outputting oncorrect image names etc.
 
-gulp.task('cache', function() {
-    cache.clearAll();
+gulp.task('clear', function (done) {
+    return cache.clearAll(done);
 });
 
-//
-// Watch task
-// ----------
+// Cleaner
+// =======
+// Deletes all the public asset folders.
+
+gulp.task('clean', function(cb) {
+    del([
+        paths.public.styles,
+        paths.public.js,
+        paths.public.img
+    ], cb);
+});
+
+// Watcher
+// =======
 // Watches the different directores for changes and then
 // runs their relevant tasks and livereloads.
-//
 
 gulp.task('watch', function() {
     // Run the appropriate task when assets change
     gulp.watch(paths.assets.styles.files, ['styles']);
-    gulp.watch(paths.assets.scripts.files, ['scripts']);
-    gulp.watch(paths.assets.images.files, ['images']);
+    gulp.watch(paths.assets.js.files, ['scripts']);
+    gulp.watch(paths.assets.img.files, ['images']);
 });
 
-//
-// Deploy task
-// -----------
-// Runs all of the main tasks, without activating livereload.
-//
+// Production assets
+// =================
+// Goes through all our assets and readies them for production.
+// - Minification
+// - Concatenation
+// - Debug stripping
 
-gulp.task('deploy', ['clean'], function() {
-    // Run the styles task, but minify the output
-    gulp.src(paths.assets.styles.files)
+gulp.task('production', ['clean'], function() {
+
+    // Styles
+    var styles = gulp.src(paths.assets.styles.files)
         .pipe(sass())
-        .pipe(autoprefix('last 4 version'))
+        .pipe(autoprefix(settings.autoprefix.versions))
         .pipe(minify())
         .pipe(gulp.dest(paths.public.styles));
 
-    gulp.src(paths.assets.scripts.files)
+    // Scripts
+    var scripts = gulp.src(paths.assets.js.files)
         .pipe(concat('main.js'))
+        .pipe(strip())
         .pipe(uglify())
-        .pipe(gulp.dest(paths.public.scripts));
+        .pipe(gulp.dest(paths.public.js));
 
+    // Compress all images.
+    // We use seperate tasks for each file format as
+    // there is an issue with the 'imagemin' bundle
+    // and it's svg support.
 
-    // Optimise the images
-    gulp.start('images');
+    // PNGs
+    var pngs = gulp.src(paths.assets.img.png)
+        .pipe(png({optimizationLevel: 3})())
+        .pipe(gulp.dest(paths.public.img));
+
+    // JPGs
+    var jpgs = gulp.src(paths.assets.img.jpg)
+        .pipe(jpg({progressive: true})())
+        .pipe(gulp.dest(paths.public.img));
+
+    // GIFs
+    var gifs = gulp.src(paths.assets.img.gif)
+        .pipe(gif({interlaced: true})())
+        .pipe(gulp.dest(paths.public.img));
+
+    // SVGs
+    var svgs = gulp.src(paths.assets.img.svg)
+        .pipe(gulp.dest(paths.public.img));
+
+    // Return the streams in one combined stream
+    return merge(styles, scripts, pngs, jpgs, gifs, svgs);
+});
+
+// Deployment
+// ==========
+// This task runs 'production' and then grabs all the files
+// we want to upload and puts them in there own folder.
+
+gulp.task('deploy', ['production'], function() {
+    gulp.src(deployment.files, {base: '.'})
+        .pipe(gulp.dest(deployment.destination));
 });
 
 //
-// Defualt task
-// ------------
-// Runs every task, and then watches files for changes.
-//
+// Default
+// =======
+// Runs every task, and then watches the project  for changes.
 
-gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images', 'watch');
+gulp.task('default', ['clean', 'styles', 'scripts', 'images', 'watch'], function() {
+    notifier.notify({message: 'Tasks complete'});
 });
