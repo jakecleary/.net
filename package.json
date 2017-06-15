@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "gulp",
         "prod": "gulp production",
-        "delpoy": "gulp deploy"
+        "deploy": "gulp deploy"
     },
     "devDependencies": {
         "del": "^3.0.0",
