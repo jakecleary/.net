@@ -138,12 +138,12 @@ gulp.task('clear', function(done) {
 // =======
 // Deletes all the public asset folders.
 
-gulp.task('clean', function(cb) {
-    del([
+gulp.task('clean', function() {
+    return del([
         paths.public.styles,
         paths.public.js,
         paths.public.img
-    ], cb);
+    ]);
 });
 
 // Watcher
