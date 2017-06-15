@@ -130,7 +130,7 @@ gulp.task('images', function() {
 // Completely clear the cache to stop image-min
 // outputting oncorrect image names etc.
 
-gulp.task('clear', function (done) {
+gulp.task('clear', function(done) {
     return cache.clearAll(done);
 });
 
@@ -188,17 +188,17 @@ gulp.task('production', ['clean'], function() {
 
     // PNGs
     var pngs = gulp.src(paths.assets.img.png)
-        .pipe(png({optimizationLevel: 3})())
+        .pipe(png({ optimizationLevel: 3 })())
         .pipe(gulp.dest(paths.public.img));
 
     // JPGs
     var jpgs = gulp.src(paths.assets.img.jpg)
-        .pipe(jpg({progressive: true})())
+        .pipe(jpg({ progressive: true })())
         .pipe(gulp.dest(paths.public.img));
 
     // GIFs
     var gifs = gulp.src(paths.assets.img.gif)
-        .pipe(gif({interlaced: true})())
+        .pipe(gif({ interlaced: true })())
         .pipe(gulp.dest(paths.public.img));
 
     // SVGs
@@ -215,7 +215,7 @@ gulp.task('production', ['clean'], function() {
 // we want to upload and puts them in there own folder.
 
 gulp.task('deploy', ['production'], function() {
-    gulp.src(deployment.files, {base: '.'})
+    gulp.src(deployment.files, { base: '.' })
         .pipe(gulp.dest(deployment.destination));
 });
 
@@ -225,5 +225,5 @@ gulp.task('deploy', ['production'], function() {
 // Runs every task, and then watches the project  for changes.
 
 gulp.task('default', ['clean', 'styles', 'scripts', 'images', 'watch'], function() {
-    notifier.notify({message: 'Tasks complete'});
+    notifier.notify({ message: 'Tasks complete' });
 });
