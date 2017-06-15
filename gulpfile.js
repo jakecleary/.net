@@ -14,9 +14,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
 
     // Images
-    png = require('imagemin-optipng'),
-    jpg = require('imagemin-jpegtran'),
-    gif = require('imagemin-gifsicle'),
+    img = require('gulp-imagemin'),
     cache = require('gulp-cache'),
 
     // Other
@@ -45,11 +43,7 @@ var paths = {
         },
         img: {
             dir: 'assets/images',
-            files: 'assets/images/**/*',
-            png: 'assets/images/*.png',
-            jpg: 'assets/images/*.jpg',
-            gif: 'assets/images/*.gif',
-            svg: 'assets/images/*.svg'
+            files: 'assets/images/**/*'
         }
     },
     public: {
@@ -181,32 +175,12 @@ gulp.task('production', ['clean'], function() {
         .pipe(uglify())
         .pipe(gulp.dest(paths.public.js));
 
-    // Compress all images.
-    // We use seperate tasks for each file format as
-    // there is an issue with the 'imagemin' bundle
-    // and it's svg support.
-
-    // PNGs
-    var pngs = gulp.src(paths.assets.img.png)
-        .pipe(png({ optimizationLevel: 3 })())
-        .pipe(gulp.dest(paths.public.img));
-
-    // JPGs
-    var jpgs = gulp.src(paths.assets.img.jpg)
-        .pipe(jpg({ progressive: true })())
-        .pipe(gulp.dest(paths.public.img));
-
-    // GIFs
-    var gifs = gulp.src(paths.assets.img.gif)
-        .pipe(gif({ interlaced: true })())
-        .pipe(gulp.dest(paths.public.img));
-
-    // SVGs
-    var svgs = gulp.src(paths.assets.img.svg)
-        .pipe(gulp.dest(paths.public.img));
+    // Images.
+    var imgs = gulp.src(paths.assets.img.files)
+        .pipe(img()).pipe(gulp.dest(paths.public.img));
 
     // Return the streams in one combined stream
-    return merge(styles, scripts, pngs, jpgs, gifs, svgs);
+    return merge(styles, scripts, imgs);
 });
 
 // Deployment

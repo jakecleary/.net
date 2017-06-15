@@ -5,7 +5,9 @@
         "url": "http://github.com/jakecleary/holding-page"
     },
     "scripts": {
-        "gulp": "gulp"
+        "dev": "gulp",
+        "prod": "gulp production",
+        "delpoy": "gulp deploy"
     },
     "devDependencies": {
         "del": "^3.0.0",
@@ -13,15 +15,13 @@
         "gulp-autoprefixer": "^4.0.0",
         "gulp-cache": "^0.4.6",
         "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^3.3.0",
         "gulp-minify-css": "^1.2.4",
         "gulp-notify": "^3.0.0",
         "gulp-sass": "^3.1.0",
         "gulp-strip-debug": "^1.1.0",
         "gulp-uglify": "^3.0.0",
         "gulp-util": "^3.0.8",
-        "imagemin-gifsicle": "^5.1.0",
-        "imagemin-jpegtran": "^5.0.2",
-        "imagemin-optipng": "^5.2.1",
         "merge-stream": "^1.0.1",
         "node-notifier": "^5.1.2"
     }
