@@ -75,7 +75,9 @@ var deployment = {
         '!{node_modules,node_modules/**}',
         '!package.json',
         '!gulpfile.js',
-        '!readme.md'
+        '!readme.md',
+        '!LICENSE.md',
+        '!yarn.lock'
     ],
 
     // The folder to store them in
