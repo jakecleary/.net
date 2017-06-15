@@ -1,124 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Jake Cleary</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="public/styles/main.css">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-    </head>
+    <title>Jake Cleary</title>
 
-    <body class="page">
+    <link rel="stylesheet" type="text/css" href="public/styles/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+</head>
 
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<body class="page">
 
-            ga('create', 'UA-62450021-1', 'auto');
-            ga('send', 'pageview');
-        </script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        <header class="header">
-            <div class="profile">
-                <img src="public/images/jakecleary.jpg" alt="A picture of me (Jake Cleary)" class="profile__image">
-                <h1 class="profile__name">Jake Cleary</h1>
-            </div>
+        ga('create', 'UA-62450021-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 
-            <nav class="nav">
-                <span data-section="site-section--intro" class="nav__link nav__link--active">Home</span>
-                <span data-section="site-section--cv" class="nav__link">CV</span>
-            </nav>
-        </header>
+    <header class="header">
+        <div class="profile">
+            <img src="public/images/jakecleary.jpg" alt="A picture of me (Jake Cleary)" class="profile__image">
+            <h1 class="profile__name">Jake Cleary</h1>
+        </div>
 
-        <main class="page__content">
+        <nav class="nav">
+            <span data-section="site-section--intro" class="nav__link nav__link--active">Home</span>
+            <span data-section="site-section--cv" class="nav__link">CV</span>
+        </nav>
+    </header>
 
-            <article class="site-section site-section--intro site-section--active">
+    <main class="page__content">
 
-                <p>Hi, I'm Jake Cleary, a web developer from the south coast of the UK. I enjoy writing elegent, efficient code; I work on some open source projects like <a href="https://github.com/mojotech/jeet">Jeet</a> and <a href="http://github.com/jakecleary/ultrapress-framework">UltraPress</a>; and like nothing more than getting stuck in and learning new things.</p>
-                <p>A few of the technologies I'm interested in are:</p>
-                <ul>
-                    <li>PHP</li>
-                    <li>Laravel 5</li>
-                    <li>Javascript</li>
-                    <li>Gulp</li>
-                    <li>Scss</li>
-                    <li>HTML</li>
+        <article class="site-section site-section--intro site-section--active">
+
+            <p>Hi, I'm Jake Cleary, a web developer from the south coast of the UK. I enjoy writing elegent, efficient code; I work on some open source projects like <a href="https://github.com/mojotech/jeet">Jeet</a> and <a href="http://github.com/jakecleary/ultrapress-framework">UltraPress</a>;
+                and like nothing more than getting stuck in and learning new things.</p>
+            <p>A few of the technologies I'm interested in are:</p>
+            <ul>
+                <li>PHP</li>
+                <li>Laravel 5</li>
+                <li>Javascript</li>
+                <li>Gulp</li>
+                <li>Scss</li>
+                <li>HTML</li>
+            </ul>
+            <p>Feel free to check out my code on <a href="https://github.com/jakecleary">Github</a>; follow me on <a href="https://twitter.com/jakecleary">Twitter</a>; or <a href="mailto:shout@jakecleary.net">contact me</a>.
+
+        </article>
+
+        <article class="site-section site-section--cv">
+
+            <section class="section section--about">
+
+                <h2 class="section__heading">About</h2>
+
+                <dl>
+
+                    <dt>Name</dt>
+                    <dd>Jake Cleary</dd>
+
+                    <dt>Location</dt>
+                    <dd>Worthing, UK</dd>
+
+                    <dt>Contact</dt>
+                    <dd><a href="mailto:shout@jakecleary.net">shout@jakecleary.net</a> | 07460 469803</dd>
+
+                </dl>
+
+            </section>
+
+            <section class="section section--overview">
+                <h2 class="section__heading">Overview</h2>
+                <p>Full stack developer with three years experience building sites using HTML; Scss; Javascript; and PHP, using libraries such as WordPress; Laravel; and jQuery, and utilizing tools such as Gulp; Composer; and iTerm for CLI.</p>
+                <p>I currently work with front-end technologies mostly, but aim to transition into a purely back-end role.</p>
+                <p>I'm passionate about developing my skillset and eventually working with large teams to create powerful server-side applications.</p>
+            </section>
+
+            <section class="section section--experience">
+                <h2 class="section__heading">Experience</h2>
+                <ul class="experience">
+                    <li>
+                        <h3>Tann Westlake <small>August 2012 - Present</small></h3>
+                        <p>Responsible for building sites for a multitude of clients, using a mobile first approach, HTML5 and BEM-style Scss. Building Javascript modules such as sliders, tab systems, and other intereactive elements using the revealing module
+                            pattern.</p>
+                        <p>I work with clients in multiple industries, primarily pharmaceutical and marine, and have built applications that hook into the Google Maps API to help users find medical centers close-by, and other geographical data.</p>
+                        <p class="page-break-after">I'm also responsible for configuring and maintaining Apache hosting spaces on shared and bare-bones hosting platforms, as well as deploying sites using tools like FTP, and scp.</p>
+                        <p>As the development team grew I implemented processes such as a gulpfile for automating parts of deployment: for example, one task handled compiling and optimising all assets and copying all the deployable files into a new directory
+                            ready for upload. This ensured mistakes weren't made during the upload process.</p>
+                        <p>I also moved the team over to an Scss based workflow, and built a <a href="https://github.com/jakecleary/ultrapress-framework">WordPress framework</a> which allows a more MVC style approach to development, useful for larger sites
+                            with complex setups and needs.</p>
+                    </li>
+
+                    <li>
+                        <h3>Freelance <small>2012 - Present</small></h3>
+                        <p>I have carried out small freelance work for various clients over the past few years.</p>
+                        <p>Most recently I was contracted to work on part of the front end for the promotional site for the Mad Max game. I was responsible for building an interactive map that heavily utilized Javascript for things like sliders, overlays,
+                            and tooltips. It also used techniques such as background videos.</p>
+                        <p>My contributions are not live yet, but I can show you a working copy on request.</p>
+                    </li>
                 </ul>
-                <p>Feel free to check out my code on <a href="https://github.com/jakecleary">Github</a>; follow me on <a href="https://twitter.com/jakecleary">Twitter</a>; or <a href="mailto:shout@jakecleary.net">contact me</a>.
+            </section>
 
-            </article>
+            <section class="section section--projects">
+                <h2 class="section__heading">Projects</h2>
+                <ul>
+                    <li>Current maintainer of the <a href="http://jeet.gs">Jeet grid system</a>, a project with <a href="https://github.com/mojotech/jeet">over 2000 stars on Github</a>.</li>
+                    <li><a href="https://github.com/jakecleary/ultrapress-framework">UltraPress</a>, a WordPress framework I created (and continue to improve) in order to better manage large Wordpress projects. I plan to split the <a href="https://github.com/jakecleary/ultrapress-library/">supporting library</a>                        into seperate packages that can be used and swapped in/out using an IOC container.</li>
+                </ul>
+            </section>
 
-            <article class="site-section site-section--cv">
+            <section class="section section--interests">
+                <h2 class="section__heading">Interests</h2>
+                <p>I enjoy cycling whenever I can - especially mountain-biking. I'm a keen snooker player and love practising my skills against friends. I also have an interest in philosophy &amp; economics and enjoy gaming, particularly strategy games.</p>
+            </section>
 
-                <section class="section section--about">
+        </article>
 
-                    <h2 class="section__heading">About</h2>
+    </main>
 
-                    <dl>
+    <script src="public/scripts/main.js"></script>
+</body>
 
-                        <dt>Name</dt>
-                        <dd>Jake Cleary</dd>
-
-                        <dt>Location</dt>
-                        <dd>Worthing, UK</dd>
-
-                        <dt>Contact</dt>
-                        <dd><a href="mailto:shout@jakecleary.net">shout@jakecleary.net</a> | 07460 469803</dd>
-
-                    </dl>
-
-                </section>
-
-                <section class="section section--overview">
-                    <h2 class="section__heading">Overview</h2>
-                    <p>Full stack developer with three years experience building sites using HTML; Scss; Javascript; and PHP, using libraries such as WordPress; Laravel; and jQuery, and utilizing tools such as Gulp; Composer; and iTerm for CLI.</p>
-                    <p>I currently work with front-end technologies mostly, but aim to transition into a purely back-end role.</p>
-                    <p>I'm passionate about developing my skillset and eventually working with large teams to create powerful server-side applications.</p>
-                </section>
-
-                <section class="section section--experience">
-                    <h2 class="section__heading">Experience</h2>
-                    <ul class="experience">
-                        <li>
-                            <h3>Tann Westlake <small>August 2012 - Present</small></h3>
-                            <p>Responsible for building sites for a multitude of clients, using a mobile first approach, HTML5 and BEM-style Scss. Building Javascript modules such as sliders, tab systems, and other intereactive elements using the revealing module pattern.</p>
-                            <p>I work with clients in multiple industries, primarily pharmaceutical and marine, and have built applications that hook into the Google Maps API to help users find medical centers close-by, and other geographical data.</p>
-                            <p class="page-break-after">I'm also responsible for configuring and maintaining Apache hosting spaces on shared and bare-bones hosting platforms, as well as deploying sites using tools like FTP, and scp.</p>
-                            <p>As the development team grew I implemented processes such as a gulpfile for automating parts of deployment: for example, one task handled compiling and optimising all assets and copying all the deployable files into a new directory ready for upload. This ensured mistakes weren't made during the upload process.</p>
-                            <p>I also moved the team over to an Scss based workflow, and built a <a href="https://github.com/jakecleary/ultrapress-framework">WordPress framework</a> which allows a more MVC style approach to development, useful for larger sites with complex setups and needs.</p>
-                        </li>
-
-                        <li>
-                            <h3>Freelance <small>2012 - Present</small></h3>
-                            <p>I have carried out small freelance work for various clients over the past few years.</p>
-                            <p>Most recently I was contracted to work on part of the front end for the promotional site for the Mad Max game. I was responsible for building an interactive map that heavily utilized Javascript for things like sliders, overlays, and tooltips. It also used techniques such as background videos.</p>
-                            <p>My contributions are not live yet, but I can show you a working copy on request.</p>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="section section--projects">
-                    <h2 class="section__heading">Projects</h2>
-                    <ul>
-                        <li>Current maintainer of the <a href="http://jeet.gs">Jeet grid system</a>, a project with <a href="https://github.com/mojotech/jeet">over 2000 stars on Github</a>.</li>
-                        <li><a href="https://github.com/jakecleary/ultrapress-framework">UltraPress</a>, a WordPress framework I created (and continue to improve) in order to better manage large Wordpress projects. I plan to split the <a href="https://github.com/jakecleary/ultrapress-library/">supporting library</a> into seperate packages that can be used and swapped in/out using an IOC container.</li>
-                    </ul>
-                </section>
-
-                <section class="section section--interests">
-                    <h2 class="section__heading">Interests</h2>
-                    <p>I enjoy cycling whenever I can - especially mountain-biking. I'm a keen snooker player and love practising my skills against friends. I also have an interest in philosophy &amp; economics and enjoy gaming, particularly strategy games.</p>
-                </section>
-
-            </article>
-
-        </main>
-
-        <script src="public/scripts/main.js"></script>
-    </body>
 </html>
